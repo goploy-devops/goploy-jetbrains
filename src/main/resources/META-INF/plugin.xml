@@ -1,0 +1,21 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <id>com.goploy</id>
+  <name>Goploy</name>
+  <vendor>zhenorzz</vendor>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <resource-bundle>messages.MyBundle</resource-bundle>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow factoryClass="com.goploy.toolwindow.MyToolWindowFactory" id="Goploy" icon="/logo.png"/>
+    <notificationGroup id="Goploy" displayType="BALLOON" key="notification.group.name"/>
+    <applicationConfigurable
+            parentId="tools"
+            instance="com.goploy.setting.ApplicationSettingsConfigurable"
+            id="com.zhenozz.ApplicationSettingsConfigurable"
+            displayName="Goploy"/>
+      <applicationService serviceImplementation="com.goploy.setting.AppSettingsState"/>
+  </extensions>
+</idea-plugin>
