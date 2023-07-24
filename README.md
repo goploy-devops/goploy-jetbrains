@@ -1,7 +1,5 @@
 # Goploy Extension for Jetbrains
 
-<iframe width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/22343"></iframe>
-
 Name: go + deploy
 
 A web deployment system tool!
@@ -9,6 +7,13 @@ A web deployment system tool!
 Support all kinds of code release and rollback, which can be done through the web with one click!
 
 Complete installation instructions, no difficulty in getting started!
+
+## Install
+
+1. Install a compatible JetBrains IDE, such as IntelliJ IDEA, CLion, PyCharm, or other IntelliJ-based IDEs
+2. Launch the IDE and open plugin settings
+3. Search for Goploy and click install
+4. Set the configure in tools settings
 
 ## Features
 
