@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d2dd8e2-011a-4a3d-8ba2-433db640de8b" name="Changes" comment="fix mac right click">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="5d2dd8e2-011a-4a3d-8ba2-433db640de8b" name="Changes" comment="added highlight text fragment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/ToolWindowFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/ToolWindowFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +90,7 @@
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
@@ -145,6 +145,7 @@
       <workItem from="1690162856991" duration="11921000" />
       <workItem from="1690181790613" duration="4449000" />
       <workItem from="1690188278497" duration="3600000" />
+      <workItem from="1690191967606" duration="1077000" />
     </task>
     <task id="LOCAL-00001" summary="tool window">
       <option name="closed" value="true" />
@@ -186,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690188608612</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added highlight text fragment">
+      <option name="closed" value="true" />
+      <created>1690192218796</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690192218796</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +222,8 @@
     <MESSAGE value="add install guide" />
     <MESSAGE value="add extension setting" />
     <MESSAGE value="fix mac right click" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix mac right click" />
+    <MESSAGE value="added highlight text fragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added highlight text fragment" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
