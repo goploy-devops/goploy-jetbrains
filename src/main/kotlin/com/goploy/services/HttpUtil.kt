@@ -26,7 +26,7 @@ class HttpUtil {
         }
         fun doPost(url: String, value: Any): JsonNode {
             val settings = AppSettingsState.instance
-            val uri = URI.create(settings.domain + url)
+            val uri = URI.create(settings.domain.trim('/') + url)
             val connection = uri.toURL().openConnection() as HttpURLConnection
             connection.setRequestProperty("X-API-KEY", settings.apiKey)
             connection.setRequestProperty("Content-Type", "application/json")
