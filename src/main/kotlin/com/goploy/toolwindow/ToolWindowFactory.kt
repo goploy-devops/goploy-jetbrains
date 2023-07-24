@@ -17,16 +17,18 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.ui.showYesNoDialog
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
+import com.intellij.ui.ColoredTreeCellRenderer
+import com.intellij.ui.JBColor
+import com.intellij.ui.SimpleTextAttributes
 import com.intellij.ui.TreeSpeedSearch
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.content.ContentFactory
 import com.intellij.ui.treeStructure.Tree
-import java.awt.*
+import java.awt.BorderLayout
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import javax.swing.*
 import javax.swing.tree.DefaultMutableTreeNode
-import javax.swing.tree.DefaultTreeCellRenderer
 import javax.swing.tree.DefaultTreeModel
 
 
@@ -61,7 +63,7 @@ class ToolWindowFactory : ToolWindowFactory {
         val pRoot = DefaultMutableTreeNode("fake root")
         val treeModel = DefaultTreeModel(pRoot)
         val jTree = Tree(treeModel)
-        TreeSpeedSearch(jTree)
+        val speedSearch = TreeSpeedSearch(jTree)
         genNamespaceNode(jTree)
         jTree.isRootVisible = false
         jTree.addTreeWillExpandListener(object : javax.swing.event.TreeWillExpandListener {
@@ -81,28 +83,40 @@ class ToolWindowFactory : ToolWindowFactory {
             override fun treeWillCollapse(event: javax.swing.event.TreeExpansionEvent) {}
         })
 
-        jTree.cellRenderer = object : DefaultTreeCellRenderer() {
-            override fun getBackgroundNonSelectionColor(): Color? {
-                return UIManager.getColor("Tree.background")
-            }
-
-            override fun getTreeCellRendererComponent(
+        jTree.cellRenderer = object : ColoredTreeCellRenderer() {
+            override fun customizeCellRenderer(
                 tree: JTree,
-                value: Any,
+                value: Any?,
                 selected: Boolean,
                 expanded: Boolean,
                 leaf: Boolean,
                 row: Int,
                 hasFocus: Boolean
-            ): Component {
-                super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus)
-                borderSelectionColor = null
+            ) {
+                if (value is DefaultMutableTreeNode) {
+                    val userObject = value.userObject.toString()
+                    // Highlight text matches
+                    val matchingFragments = speedSearch.matchingFragments(userObject)
+                    if (matchingFragments.toString().isNotEmpty()) {
+                        var lastIndex = 0
+                        if (matchingFragments != null) {
+                            for (fragment in matchingFragments) {
+                                append(userObject.substring(lastIndex, fragment.startOffset), SimpleTextAttributes.REGULAR_ATTRIBUTES)
+                                append(userObject.substring(fragment.startOffset, fragment.endOffset),
+                                    SimpleTextAttributes(SimpleTextAttributes.STYLE_SEARCH_MATCH, null))
+                                lastIndex = fragment.endOffset
+                            }
+                        }
+                        append(userObject.substring(lastIndex), SimpleTextAttributes.REGULAR_ATTRIBUTES)
+                    } else {
+                        append(userObject, SimpleTextAttributes.REGULAR_ATTRIBUTES)
+                    }
+                }
                 icon = if (leaf) {
                     AllIcons.Actions.Run_anything
                 } else {
                     AllIcons.Actions.ModuleDirectory
                 }
-                return this
             }
         }
 
