@@ -15,6 +15,15 @@ Complete installation instructions, no difficulty in getting started!
 3. Search for Goploy and click install
 4. Set the configure in tools settings
 
+## Extension Settings
+
+![Setting](./setting.png)
+
+This extension contributes the following settings:
+
+* `goploy.apiKey`: goploy api key
+* `goploy.domain`: goploy domain like https://example.com
+
 ## Features
 
 Use Goploy to automate your development workflow, so you can focus on work that matters most.
@@ -33,7 +42,6 @@ This extension contributes the following settings:
 ## Preview
 
 ![Preview](./preview.png)
-
 
 ### For more information
 
