@@ -13,7 +13,7 @@
   <resource-bundle>messages.MyBundle</resource-bundle>
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow factoryClass="com.goploy.toolwindow.MyToolWindowFactory" id="Goploy" icon="/logo.png"/>
+    <toolWindow factoryClass="com.goploy.toolwindow.ToolWindowFactory" id="Goploy" icon="/logo.png"/>
     <notificationGroup id="Goploy" displayType="BALLOON" key="notification.group.name"/>
     <applicationConfigurable
             parentId="tools"

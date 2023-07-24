@@ -30,7 +30,7 @@ import javax.swing.tree.DefaultTreeCellRenderer
 import javax.swing.tree.DefaultTreeModel
 
 
-class MyToolWindowFactory : ToolWindowFactory {
+class ToolWindowFactory : ToolWindowFactory {
     private val deployingProjects = mutableMapOf<Int, String>()
 
     init {
@@ -116,7 +116,7 @@ class MyToolWindowFactory : ToolWindowFactory {
                 val treePath = jTree.getClosestPathForLocation(e.x, e.y)
                 if (treePath != null) {
                     if (treePath.lastPathComponent is ProjectNode) {
-                        if (e.isPopupTrigger) {
+                        if (e.isPopupTrigger || SwingUtilities.isRightMouseButton(e)) {
                             createPopupMenu(jTree).show(jTree, e.x, e.y)
                         }
                     }
@@ -135,15 +135,10 @@ class MyToolWindowFactory : ToolWindowFactory {
 
     fun createPopupMenu(jTree: Tree): JPopupMenu {
         val popup = JPopupMenu()
-
         popup.add(runItem(jTree))
         popup.add(branchItem(jTree))
-
-
         popup.add(tagItem(jTree))
-
         popup.add(resultItem(jTree))
-
         return popup
     }
 

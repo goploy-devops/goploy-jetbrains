@@ -1,11 +1,11 @@
 plugins {
   id("java")
   id("org.jetbrains.kotlin.jvm") version "1.8.21"
-  id("org.jetbrains.intellij") version "1.13.3"
+  id("org.jetbrains.intellij") version "1.15.0"
 }
 
 group = "com.zhenorzz"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
   mavenCentral()
@@ -20,8 +20,6 @@ dependencies {
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
   version.set("2022.2.5")
-  type.set("IC") // Target IDE Platform
-
   plugins.set(listOf(/* Plugin Dependencies */))
 }
 

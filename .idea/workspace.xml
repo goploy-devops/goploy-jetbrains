@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d2dd8e2-011a-4a3d-8ba2-433db640de8b" name="Changes" comment="add install guide">
+    <list default="true" id="5d2dd8e2-011a-4a3d-8ba2-433db640de8b" name="Changes" comment="add extension setting">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/MyToolWindowFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/ToolWindowFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/NamespaceNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/TreeNode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/RefreshAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/goploy/toolwindow/RefreshAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +98,13 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Users/Administrator/docker-env/project/java/goploy-jetbrains/build/libs/goploy-jetbrains-1.0-SNAPSHOT.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/Administrator/docker-env/project/java/goploy-jetbrains-jdk11&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -140,7 +146,9 @@
       <workItem from="1690009017838" duration="573000" />
       <workItem from="1690010524123" duration="1681000" />
       <workItem from="1690160980270" duration="1861000" />
-      <workItem from="1690162856991" duration="8904000" />
+      <workItem from="1690162856991" duration="11921000" />
+      <workItem from="1690181790613" duration="4449000" />
+      <workItem from="1690188278497" duration="124000" />
     </task>
     <task id="LOCAL-00001" summary="tool window">
       <option name="closed" value="true" />
@@ -166,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690170894678</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add extension setting">
+      <option name="closed" value="true" />
+      <created>1690172030660</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690172030660</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,9 +207,14 @@
     <MESSAGE value="tool window" />
     <MESSAGE value="readme" />
     <MESSAGE value="add install guide" />
-    <option name="LAST_COMMIT_MESSAGE" value="add install guide" />
+    <MESSAGE value="add extension setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="add extension setting" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
