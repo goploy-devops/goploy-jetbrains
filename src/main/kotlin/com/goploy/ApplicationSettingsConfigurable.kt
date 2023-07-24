@@ -1,16 +1,16 @@
-package com.goploy.setting
+package com.goploy
 
 import com.intellij.openapi.options.Configurable
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
-import javax.swing.*
+import javax.swing.JComponent
+import javax.swing.JPanel
 
 class ApplicationSettingsConfigurable : Configurable {
 
     private val domainField = JBTextField()
     private val apiKeyField = JBTextField()
-
     override fun getDisplayName(): String {
         return "Goploy" // 在设置对话框中显示的配置页面的名称
     }
@@ -21,8 +21,6 @@ class ApplicationSettingsConfigurable : Configurable {
             .addLabeledComponent(JBLabel("Api key: "), apiKeyField, 1, false)
             .addComponentFillVertically(JPanel(), 0)
             .panel
-
-
     }
 
     override fun isModified(): Boolean {

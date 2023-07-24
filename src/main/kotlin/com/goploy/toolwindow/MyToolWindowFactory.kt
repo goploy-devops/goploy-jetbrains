@@ -1,9 +1,14 @@
 package com.goploy.toolwindow
 
+import com.goploy.AppSettingsState
+import com.goploy.services.DeployService
+import com.goploy.services.NamespaceService
+import com.goploy.services.RepositoryService
 import com.intellij.icons.AllIcons
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.diagnostic.thisLogger
+import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.Task
@@ -12,22 +17,18 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.ui.showYesNoDialog
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
-import com.intellij.ui.components.JBPanel
+import com.intellij.ui.TreeSpeedSearch
+import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.content.ContentFactory
 import com.intellij.ui.treeStructure.Tree
-import com.goploy.services.DeployService
-import com.goploy.services.NamespaceService
-import com.goploy.services.RepositoryService
 import java.awt.*
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
-import javax.swing.JMenuItem
-import javax.swing.JPopupMenu
-import javax.swing.JTree
-import javax.swing.UIManager
+import javax.swing.*
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.DefaultTreeCellRenderer
 import javax.swing.tree.DefaultTreeModel
+
 
 class MyToolWindowFactory : ToolWindowFactory {
     private val deployingProjects = mutableMapOf<Int, String>()
@@ -38,16 +39,20 @@ class MyToolWindowFactory : ToolWindowFactory {
 
     companion object {
         fun genNamespaceNode(tree: Tree) {
-            val namespaceOption = NamespaceService.getOption()
-            val fake = DefaultMutableTreeNode("fake")
-            val rootNode = tree.model.root as DefaultMutableTreeNode
-            rootNode.removeAllChildren()
-            for (item in namespaceOption.list) {
-                val namespaceNode = NamespaceNode(item.namespaceName, item.namespaceId)
-                rootNode.add(namespaceNode)
-                namespaceNode.add(fake)
+            val settings = AppSettingsState.instance
+            if ( settings.domain == "" || settings.apiKey == "") {
+                ShowSettingsUtil.getInstance().showSettingsDialog(null, "Goploy")
+            } else {
+                val namespaceOption = NamespaceService.getOption()
+                val rootNode = tree.model.root as DefaultMutableTreeNode
+                rootNode.removeAllChildren()
+                for (item in namespaceOption.list) {
+                    val namespaceNode = NamespaceNode(item.namespaceName, item.namespaceId)
+                    rootNode.add(namespaceNode)
+                    namespaceNode.add(DefaultMutableTreeNode("fake"))
+                }
+                (tree.model as? DefaultTreeModel)?.reload()
             }
-            (tree.model as? DefaultTreeModel)?.reload()
         }
     }
 
@@ -56,6 +61,7 @@ class MyToolWindowFactory : ToolWindowFactory {
         val pRoot = DefaultMutableTreeNode("fake root")
         val treeModel = DefaultTreeModel(pRoot)
         val jTree = Tree(treeModel)
+        TreeSpeedSearch(jTree)
         genNamespaceNode(jTree)
         jTree.isRootVisible = false
         jTree.addTreeWillExpandListener(object : javax.swing.event.TreeWillExpandListener {
@@ -117,10 +123,12 @@ class MyToolWindowFactory : ToolWindowFactory {
                 }
             }
         })
-        val jBPanel = JBPanel<JBPanel<*>>(BorderLayout())
+
+        val jBPanel = JPanel(BorderLayout())
         jBPanel.add(jTree, BorderLayout.CENTER)
         jBPanel.background = UIManager.getColor("Tree.background")
-        val content = ContentFactory.getInstance().createContent(jBPanel, null, false)
+        val jBScrollPane = JBScrollPane(jBPanel)
+        val content = ContentFactory.getInstance().createContent(jBScrollPane, null, false)
         toolWindow.contentManager.addContent(content)
         toolWindow.setTitleActions(listOf(RefreshAction(jTree)))
     }

@@ -28,7 +28,7 @@ class ResultDialog(private val projectName: String, private val namespaceId: Int
     override fun createCenterPanel(): JBPanel<*> {
         val table = createTable()
         val scrollPane = JBScrollPane(table)
-        val panel = JBPanel<JBPanel<*>>(BorderLayout()).withPreferredSize(600, 300)
+        val panel = JBPanel<JBPanel<*>>(BorderLayout()).withPreferredSize(650, 300)
         panel.add(scrollPane)
         return panel
     }
@@ -56,10 +56,10 @@ class ResultDialog(private val projectName: String, private val namespaceId: Int
 
         val table = JBTable(tableModel)
         val columnModel = table.columnModel
-        columnModel.getColumn(0).preferredWidth = JBUI.scale(50)
+        columnModel.getColumn(0).preferredWidth = JBUI.scale(60)
         columnModel.getColumn(1).preferredWidth = JBUI.scale(200)
-        columnModel.getColumn(3).preferredWidth = JBUI.scale(130)
-        columnModel.getColumn(4).preferredWidth = JBUI.scale(40)
+        columnModel.getColumn(3).preferredWidth = JBUI.scale(180)
+        columnModel.getColumn(4).preferredWidth = JBUI.scale(60)
         columnModel.getColumn(5).preferredWidth = JBUI.scale(90)
 
         val delete: Action = object : AbstractAction() {

@@ -23,21 +23,13 @@ import javax.swing.table.TableCellRenderer
  * button. When the button is invoked the provided Action is invoked. The
  * source of the Action will be the table. The action command will contain
  * the model row number of the button that was clicked.
- *
+ * @param table the table containing the button renderer/editor
+ * @param action the Action to be invoked when the button is invoked
+ * @param column the column to which the button renderer/editor is added
  */
 class ButtonColumn(private val table: JTable, private val action: Action, column: Int) : AbstractCellEditor(),
     TableCellRenderer, TableCellEditor, ActionListener, MouseListener {
-    var mnemonic = 0
-        /**
-         * The mnemonic to activate the button when the cell has focus
-         *
-         * @param mnemonic the mnemonic
-         */
-        set(mnemonic) {
-            field = mnemonic
-            renderButton.mnemonic = mnemonic
-            editButton.mnemonic = mnemonic
-        }
+
     private val originalBorder: Border
     private var focusBorder: Border? = null
     private val renderButton: JButton = JButton()
@@ -45,15 +37,6 @@ class ButtonColumn(private val table: JTable, private val action: Action, column
     private var editorValue: Any? = null
     private var isButtonColumnEditor = false
 
-    /**
-     * Create the ButtonColumn to be used as a renderer and editor. The
-     * renderer and editor will automatically be installed on the TableColumn
-     * of the specified column.
-     *
-     * @param table the table containing the button renderer/editor
-     * @param action the Action to be invoked when the button is invoked
-     * @param column the column to which the button renderer/editor is added
-     */
     init {
         editButton.isFocusPainted = false
         editButton.addActionListener(this)
@@ -87,10 +70,7 @@ class ButtonColumn(private val table: JTable, private val action: Action, column
     override fun getTableCellEditorComponent(
         table: JTable, value: Any, isSelected: Boolean, row: Int, column: Int
     ): Component {
-        if (value == null) {
-            editButton.text = ""
-            editButton.icon = null
-        } else if (value is Icon) {
+        if (value is Icon) {
             editButton.text = ""
             editButton.icon = value
         } else {
@@ -125,10 +105,7 @@ class ButtonColumn(private val table: JTable, private val action: Action, column
         }
 
 //		renderButton.setText( (value == null) ? "" : value.toString() );
-        if (value == null) {
-            renderButton.text = ""
-            renderButton.icon = null
-        } else if (value is Icon) {
+        if (value is Icon) {
             renderButton.text = ""
             renderButton.icon = value
         } else {
@@ -161,7 +138,7 @@ class ButtonColumn(private val table: JTable, private val action: Action, column
     //  Implement MouseListener interface
     //
     /*
-     *  When the mouse is pressed the editor is invoked. If you then then drag
+     *  When the mouse is pressed the editor is invoked. If you then drag
      *  the mouse to another cell before releasing it, the editor is still
      *  active. Make sure editing is stopped when the mouse is released.
      */
